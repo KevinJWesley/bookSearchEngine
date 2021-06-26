@@ -31,3 +31,6 @@ const typeDefs = gql`
     saveBook()
   }
 `;
+
+
+module.exports = typeDefs
