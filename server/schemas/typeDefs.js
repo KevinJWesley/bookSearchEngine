@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Query {
-    me: [User]!
+    me: User
   }
   type User {
     _id: ID
@@ -38,7 +38,7 @@ const typeDefs = gql`
 
     saveBook(input: saveInput): User
   }
-    removerBook(bookId): User
+    removeBook(book: String!): User
 `;
 
 module.exports = typeDefs;
