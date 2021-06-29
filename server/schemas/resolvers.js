@@ -7,13 +7,13 @@ const { AuthenticationError } = require("apollo-server-express");
 // get a single user by either their id or their username
 const resolvers = {
   Query: {
-    users: async () => {
+    me: async () => {
       return User.find();
     },
 
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
-    },
+    // me: async (parent, { userId }) => {
+    //   return User.findOne({ _id: userId });
+    // },
   },
 
   // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
@@ -51,7 +51,7 @@ const resolvers = {
     },
     // remove a book from `savedBooks`
 
-    deleteBook: async (parent, { userId, bookId }) => {
+    removeBook: async (parent, { userId, bookId }) => {
       return User.findOneAndUpdate(
         { _id: userId },
         { $pull: { bookId: bookId } },
@@ -60,3 +60,5 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;
